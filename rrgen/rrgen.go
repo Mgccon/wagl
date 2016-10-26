@@ -61,7 +61,7 @@ func getTaskRRs(domain string, t task.Task) []rrEntry {
 
 	// A record ("A service.domain. IP")
 	//ip := t.Ports[0].HostIP.String() // use first port mapping's IP addr
-	ip := fmt.Sprintf("%s:%d", t.Ports[0].HostIP.String(), t.Ports[0].HostPort.String())
+	ip := fmt.Sprintf("%s:%d", t.Ports[0].HostIP, t.Ports[0].HostPort)
 	l = append(l, rrEntry{dns.TypeA, fmt.Sprintf("%s.%s", t.Service, tail), ip})
 
 	// SRV records for each port mapping ("SRV _service._tcp.domain. IP PORT")
