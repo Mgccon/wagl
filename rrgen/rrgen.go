@@ -60,7 +60,7 @@ func getTaskRRs(domain string, t task.Task) []rrEntry {
 	}
 
 	// A record ("A service.domain. IP")
-	ip := t.Ports[0].HostPort.String() // use first port mapping's IP addr
+	ip := fmt.Sprintf("%d", t.Ports[0].HostPort) // use first port mapping's IP addr
 
 	l = append(l, rrEntry{dns.TypeA, fmt.Sprintf("%s.%s", t.Service, tail), ip})
 
